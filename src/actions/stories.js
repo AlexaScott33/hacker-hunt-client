@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../config';
+
 export const FETCH_STORIES_REQUEST = 'FETCH_STORIES_REQUEST';
 export const fetchStoriesRequest = () => ({
     type: FETCH_STORIES_REQUEST
@@ -15,9 +17,9 @@ export const fetchStoriesError = error => ({
     error
 });
 
-export const fetchJobs = () => dispatch => {
+export const fetchStories = () => dispatch => {
     dispatch(fetchStoriesRequest());
-    fetch('https://hackerhunt.co/api/daily/0')
+    fetch(`${API_BASE_URL}/api/data`)
     .then(res => res.json())
     .then(data => {
         dispatch(fetchStoriesSuccess(data));

@@ -10,19 +10,19 @@ const initialState = {
 }
 
 export default function storiesReducer(state=initialState, action) {
-    if (action.type = FETCH_STORIES_REQUEST) {
+    if (action.type === FETCH_STORIES_REQUEST) {
         return Object.assign({}, state, {
             loading: true
         });
     }
-    if (action.type = FETCH_STORIES_SUCCESS) {
+    else if (action.type === FETCH_STORIES_SUCCESS) {
         return Object.assign({}, state, {
             data: action.data,
             loading: false,
             error: false
         });
     }
-    if (action.type = FETCH_STORIES_ERROR) {
+    else if (action.type === FETCH_STORIES_ERROR) {
         return Object.assign({}, state, {
             loading: false,
             error: action.error
