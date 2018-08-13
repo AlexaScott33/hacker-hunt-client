@@ -19,9 +19,16 @@ export const fetchStoriesError = error => ({
 
 export const fetchStories = () => dispatch => {
     dispatch(fetchStoriesRequest());
-    fetch(`${API_BASE_URL}/api/data`)
+    fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
     .then(res => res.json())
     .then(data => {
+        console.log(data);
         dispatch(fetchStoriesSuccess(data));
     })
     .catch(err => {
