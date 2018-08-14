@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchStories } from '../actions/stories';
+import List from './List';
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -9,17 +10,20 @@ class App extends Component {
     this.props.dispatch(fetchStories());
   }
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
-      <div className="App">
+      <div>
         Hey
+        <List />
       </div>
     );
   }
 }
 
+
+
 const mapStateToProps = (state) => ({
-  data: state.data
+  gifs: state.gifs
 });
 
 export default connect(mapStateToProps)(App);
