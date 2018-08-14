@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../config';
+import { API_KEY } from '../config';
 
 export const FETCH_STORIES_REQUEST = 'FETCH_STORIES_REQUEST';
 export const fetchStoriesRequest = () => ({
@@ -6,9 +6,9 @@ export const fetchStoriesRequest = () => ({
 });
 
 export const FETCH_STORIES_SUCCESS = 'FETCH_STORIES_SUCCESS';
-export const fetchStoriesSuccess = data => ({
+export const fetchStoriesSuccess = gifs => ({
     type: FETCH_STORIES_SUCCESS,
-    data
+    gifs
 });
 
 export const FETCH_STORIES_ERROR = 'FETCH_STORIES_ERROR';
@@ -19,7 +19,7 @@ export const fetchStoriesError = error => ({
 
 export const fetchStories = () => dispatch => {
     dispatch(fetchStoriesRequest());
-    fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty', {
+    fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -28,7 +28,6 @@ export const fetchStories = () => dispatch => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data);
         dispatch(fetchStoriesSuccess(data));
     })
     .catch(err => {
