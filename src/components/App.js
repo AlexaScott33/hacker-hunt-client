@@ -23,7 +23,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => ({
-  gifs: state.gifs
+  vids: state.vids
 });
 
 export default connect(mapStateToProps)(App);

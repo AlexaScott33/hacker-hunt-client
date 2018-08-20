@@ -4,7 +4,7 @@ import { FETCH_STORIES_REQUEST,
 } from '../actions/stories';
 
 const initialState = {
-    gifs: [],
+    vids: [],
     loading: false,
     error: false
 }
@@ -17,7 +17,7 @@ export default function storiesReducer(state=initialState, action) {
     }
     else if (action.type === FETCH_STORIES_SUCCESS) {
         return Object.assign({}, state, {
-            gifs: action.gifs,
+            vids: action.videos,
             loading: false,
             error: false
         });
