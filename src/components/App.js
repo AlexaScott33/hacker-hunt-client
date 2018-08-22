@@ -10,7 +10,7 @@ class App extends Component {
     this.props.dispatch(fetchStories());
   }
   render() {
-    console.log(this.props);
+    console.log(this.props.vids.items);
     return (
       <div>
         Hey
